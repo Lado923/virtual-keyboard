@@ -1,0 +1,14 @@
+.k-box{
+    border: 2px solid black;
+    padding:5px;
+    height: 320px;
+}
+
+.k-item{
+    height: 50px;
+    width: 50px;
+    padding: 3px;
+    margin: 3px;
+    float: left;
+    border: 1px solid black;
+}
