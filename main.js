@@ -4,13 +4,48 @@ let keyboard = [96, 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 45, 61, 113, 119, 10
 // document.onkeypress = function(event){
     
 //     keyboard.push(event.charCode);
-//     console.log(keyboard);
+//     console.log(event);
 // }
 
 function init(){
     let out = '';
     for (i = 0; i < keyboard.length; i++){
-        out += `<div class="k-item">${String.fromCharCode(keyboard[i])}</div>`
+switch(i){
+case 12: out += `<div class="k-item">${String.fromCharCode(keyboard[i])}</div>
+<div class="k-item wide_k backspace">Backspace</div>
+<div class="clearfix"></div>
+<div class="k-item tab">Tab</div>`;
+break;
+case 25: out += `<div class="k-item">${String.fromCharCode(keyboard[i])}</div>
+<div class="k-item backspace">Del</div>
+<div class="clearfix"></div>
+<div class="k-item capslock wide_k">CapsLock</div>`;
+break;
+case 36: out += `<div class="k-item">${String.fromCharCode(keyboard[i])}</div>
+<div class="k-item wide_k enter">Enter</div>
+<div class="clearfix"></div>
+<div class="k-item shift wide_k">Shift</div>`;
+break;
+case 47: out += `<div class="k-item">${String.fromCharCode(keyboard[i])}</div>
+<div class="k-item arrow_up">▲</div>
+<div class="k-item wide_k shift">Shift</div>
+<div class="clearfix"></div>
+<div class="k-item strl">Ctrl</div>
+<div class="k-item win">Win</div>
+<div class="k-item alt">Alt</div>`;
+break;
+case 48: out += `<div class="k-item space extra-wide">${String.fromCharCode(keyboard[i])}</div>
+<div class="k-item alt">Alt</div>
+<div class="k-item arrow_left">◄</div>
+<div class="k-item arrow_left">▼</div>
+<div class="k-item arrow_right">►</div>
+<div class="k-item strl">Ctrl</div>
+`;
+break;
+default:out += `<div class="k-item">${String.fromCharCode(keyboard[i])}</div>`
+
+}
+
     }
     document.querySelector('body').innerHTML = out;
 }
