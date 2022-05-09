@@ -1,6 +1,33 @@
 let EnKeyboard = [96, 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 45, 61, 113, 119, 101, 114, 116, 121, 117, 105, 111, 112, 91, 93, 92, 97, 115, 100, 102, 103, 104, 106, 107, 108, 59, 39, 122, 120, 99, 118, 98, 110, 109, 44, 46, 47, 32];
 let RuKeyboard = [1105, 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 45, 61, 1081, 1094, 1091, 1082, 1077, 1085, 1075, 1096, 1097, 1079, 1093, 1098, 92, 1092, 1099, 1074, 1072, 1087, 1088, 1086, 1083, 1076, 1078, 1101, 1103, 1095, 1089, 1084, 1080, 1090, 1100, 1073, 1102, 46, 32];
-let keyboard = RuKeyboard
+let RuEn = ''
+let keyboard = ''
+
+
+
+// Проверка одновременно нажатых клавиш (для переключения языка)
+function runOnKeys(func, ...codes) {
+  let pressed = new Set();
+
+  document.addEventListener('keydown', function(event) {
+    pressed.add(event.code);
+
+    for (let code of codes) { 
+      if (!pressed.has(code)) {
+        return;
+      }
+    }
+    pressed.clear();
+    func();
+  });
+
+  document.addEventListener('keyup', function(event) {
+    pressed.delete(event.code);
+  });
+
+}
+
+!localStorage.RuEn ? RuEn = 'EN' : RuEn = JSON.parse(localStorage.getItem('RuEn'));
 
 
 // document.onkeypress = function(event){
@@ -10,6 +37,7 @@ let keyboard = RuKeyboard
 // }
 
 function init(){
+    RuEn == 'EN' ? keyboard = EnKeyboard : keyboard = RuKeyboard
     let out = '';
     out += `
     <div class="page_box">
@@ -45,7 +73,7 @@ case 46: out += `<div class="k-item">${String.fromCharCode(keyboard[i])}</div>
 <div class="k-item win command">Win</div>
 <div class="k-item alt command">Alt</div>`;
 break;
-case 47: out += `<div class="k-item space extra-wide">${String.fromCharCode(keyboard[i])}</div>
+case 47: out += `<div class="k-item space extra-wide">${RuEn}</div>
 <div class="k-item alt command">Alt</div>
 <div class="k-item arrow_left command">◄</div>
 <div class="k-item arrow_left command">▼</div>
@@ -61,8 +89,28 @@ default:out += `<div class="k-item">${String.fromCharCode(keyboard[i])}</div>`
 
     }
     out += `</div>
+    <div class="text">
+    <p>To change language use Shift + Alt</p>
+    <p>Клавиатура сделана в Windows ОС</p>
+    </div>
     </div>`;
     document.querySelector('body').innerHTML = out;
 }
 
+const updateLocal = () => {
+
+    RuEn == 'EN' ? RuEn = 'RU' : RuEn = 'EN';
+    localStorage.setItem('RuEn', JSON.stringify(RuEn));
+    init()
+}
+
+
+
+runOnKeys(
+    () => updateLocal(),
+    "ShiftLeft",
+    "AltLeft"
+  );
+
+console.log(RuEn)
 init()

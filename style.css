@@ -5,7 +5,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: 90vh;
+    height: 95vh;
     margin: 0 auto;
 }
 
@@ -94,5 +94,18 @@
     font-family: Arial, Helvetica, sans-serif;
     border-radius: 25px;
     padding: 2vh;
+}
+
+.text {
+    width: 120vh;
+    height: 5vh;
+    display: flex;
+    justify-content: space-around;
+}
+
+.text p {
+height: 2vh;
+margin: 0;
+display: inline-block;
 }
 
