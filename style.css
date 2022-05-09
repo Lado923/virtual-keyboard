@@ -31,7 +31,7 @@
 }
 .k-item:active{
     box-shadow: none;
-    background-color: #fff2e2;
+    background-color: #ffff;
     color: black;
     border-radius: 100px;
     animation: btn-active 0.5s ease-in-out;
@@ -45,7 +45,7 @@
   
     to {
         border-radius: 100px;
-        background-color: #fff2e2;
+        background-color: #ffff;
     }
 }
 
