@@ -5,7 +5,6 @@ let keyboard = ''
 
 
 
-// Проверка одновременно нажатых клавиш (для переключения языка)
 function runOnKeys(func, ...codes) {
   let pressed = new Set();
 
@@ -29,12 +28,6 @@ function runOnKeys(func, ...codes) {
 
 !localStorage.RuEn ? RuEn = 'EN' : RuEn = JSON.parse(localStorage.getItem('RuEn'));
 
-
-// document.onkeypress = function(event){
-    
-//     RuKeyboard.push(event.code);
-//     console.log(RuKeyboard);
-// }
 
 function init(){
     RuEn == 'EN' ? keyboard = EnKeyboard : keyboard = RuKeyboard
