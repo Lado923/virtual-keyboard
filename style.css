@@ -1,0 +1,112 @@
+
+.page_box{
+    display: flex;
+    width: 99vw;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 95vh;
+    margin: 0 auto;
+}
+
+.k-item{
+    height: 6vh;
+    width: 6vh;
+    padding: 3px;
+    float:left;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #7c7698;
+    color: white;
+    font-size: 3vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.k-item:hover{
+    box-shadow: 1px 2px 2px 2px rgba(0, 0, 0, 0.54);
+}
+.k-item:active,
+.active{
+    box-shadow: none;
+    background-color: #ffff;
+    color: black;
+    border-radius: 100px;
+    animation: btn-active 0.5s ease-in-out;
+}
+
+@keyframes btn-active {
+    from {
+        border-radius: 5px;
+        background-color: #7c7698;
+    }
+  
+    to {
+        border-radius: 100px;
+        background-color: #ffff;
+    }
+}
+
+.wide_k {
+    width: 14vh;
+}
+
+.line-k-box{
+    height:8vh;
+    width: 120vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.extra-wide {
+    width:54vh;
+}
+
+.wide_k,
+.extra-wide,
+.command {
+    background-color: #38204c;
+    font-size: 2vh;
+}
+
+
+.keyboard-box {
+    width: 124vh;
+    height: 40vh;
+    padding: 2vh 0;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    background-color: #b2acbd;
+}
+
+.input{
+    height: 30vh;
+    width: 120vh;
+    margin: 0 auto;
+    font-size: 3vh;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 25px;
+    padding: 2vh;
+}
+
+.text {
+    width: 120vh;
+    height: 5vh;
+    display: flex;
+    justify-content: space-around;
+}
+
+.text p {
+height: 2vh;
+margin: 0;
+display: inline-block;
+}
+
