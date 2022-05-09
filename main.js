@@ -47,25 +47,25 @@ function init(){
     for (i = 0; i < keyboard.length; i++){
 switch(i){
 
-case 12: out += `<div class="k-item" data="${String.fromCharCode(keyboard[i])}">${String.fromCharCode(keyboard[i])}</div>
+case 12: out += `<div class="k-item keys" data="${String.fromCharCode(keyboard[i])}">${String.fromCharCode(keyboard[i])}</div>
 <div class="k-item wide_k backspace" data="Backspace">Backspace</div>
 </div>
 <div class="line-k-box">
 <div class="k-item command" data="Tab">Tab</div>`;
 break;
-case 25: out += `<div class="k-item" data="/">/</div>
+case 25: out += `<div class="k-item keys" data="/">/</div>
 <div class="k-item del command" data="Delete">Del</div>
 </div>
 <div class="line-k-box">
 <div class="k-item capslock wide_k" data="CapsLock">CapsLock</div>`;
 break;
-case 36: out += `<div class="k-item" data="${String.fromCharCode(keyboard[i])}">${String.fromCharCode(keyboard[i])}</div>
+case 36: out += `<div class="k-item keys" data="${String.fromCharCode(keyboard[i])}">${String.fromCharCode(keyboard[i])}</div>
 <div class="k-item wide_k enter" data="Enter">Enter</div>
 </div>
 <div class="line-k-box">
 <div class="k-item shift wide_k" data="Shift">Shift</div>`;
 break;
-case 46: out += `<div class="k-item" data="${String.fromCharCode(keyboard[i])}">${String.fromCharCode(keyboard[i])}</div>
+case 46: out += `<div class="k-item keys" data="${String.fromCharCode(keyboard[i])}">${String.fromCharCode(keyboard[i])}</div>
 <div class="k-item arrow_up command" data="ArrowUp">▲</div>
 <div class="k-item wide_k shift" data="Shift">Shift</div>
 </div>
@@ -83,7 +83,7 @@ case 47: out += `<div class="k-item space extra-wide" data="">${RuEn}</div>
 </div>
 `;
 break;
-default:out += `<div class="k-item" data="${String.fromCharCode(keyboard[i])}">${String.fromCharCode(keyboard[i])}</div>`
+default:out += `<div class="k-item keys" data="${String.fromCharCode(keyboard[i])}">${String.fromCharCode(keyboard[i])}</div>`
 
 }
 
@@ -121,24 +121,22 @@ runOnKeys(
 console.log(RuEn)
 init()
 
-function foo() {
-    let btn = document.querySelectorAll('.k-item');
-    let input = document.querySelector('input');
+function typeFunc() {
+    let btn = document.querySelectorAll('.keys');
+    let inputElem = document.querySelector('.input');
     
     console.log(btn);
-    console.log(input)
-    // Развешиваем событие клика на кнопки
+    console.log(inputElem)
     for(let i = 0; i < btn.length; i++) {
       btn[i].addEventListener('click', function() {
-        // При клике на кнопку записываем ее значение в инпут
-        input.value = "5";
+        inputElem.value += btn[i].innerHTML;
       });
     }
   
   }
   
   
-  foo();
+typeFunc();
 
 
 document.onkeydown = function (event) {
